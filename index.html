@@ -1,49 +1,52 @@
 <body>
-    
-    <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <title>Teen Wolf</title>
   <style>
     body {
-      background-color: #406efb;
+      background-color: #0b0e14;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
-      font-family: 'Impact', 'Arial Black', sans-serif;
+      font-family: 'Trebuchet MS', 'Arial', sans-serif;
     }
 
-    .teen-wolf-title {
-      font-size: 4rem;
+    .wolf-container {
+      text-align: center;
+    }
+
+    .wolf-title {
+      font-size: 4.5rem;
+      font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 6px;
-      color: #ffffff;
-      text-shadow: 
-        0 0 10px rgba(5, 88, 121, 0.8),
-        0 0 20px rgba(0, 183, 255, 0.5),
-        0 0 30px rgba(0, 183, 255, 0.3);
-      position: relative;
-      transition: transform 0.3s ease;
+      letter-spacing: 12px;
+      color: transparent;
+      background: linear-gradient(180deg, #ffffff 30%, #a1a1a1 70%, #d32f2f 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      filter: drop-shadow(0 0 15px rgba(211, 47, 47, 0.6));
+      margin: 0;
     }
 
-    .teen-wolf-title span {
-      color: #084157;
-      text-shadow: 
-        0 0 10px rgba(255, 255, 255, 0.8),
-        0 0 20px rgba(2, 85, 118, 0.9);
-    }
-
-    .teen-wolf-title:hover {
-      transform: scale(1.05);
+    .wolf-subtitle {
+      color: #888;
+      font-size: 0.9rem;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      margin-top: -5px;
     }
   </style>
 </head>
 <body>
 
-  
+  <div class="wolf-container">
+    <h1 class="wolf-title">TEEN WOLF</h1>
+    <div class="wolf-subtitle">BEACON HILLS</div>
+  </div>
 
 </body>
 </html>
