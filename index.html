@@ -1,65 +1,19 @@
-<body>
-  <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Teen Wolf</title>
-  <style>
-    body {
-      background-color: #0b0e14;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: 'Trebuchet MS', 'Arial', sans-serif;
-    }
-
-    .wolf-container {
-      text-align: center;
-    }
-
-    .wolf-title {
-      font-size: 4.5rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 12px;
-      color: transparent;
-      background: linear-gradient(180deg, #ffffff 30%, #a1a1a1 70%, #d32f2f 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      filter: drop-shadow(0 0 15px rgba(211, 47, 47, 0.6));
-      margin: 0;
-    }
-
-    .wolf-subtitle {
-      color: #888;
-      font-size: 0.9rem;
-      letter-spacing: 8px;
-      text-transform: uppercase;
-      margin-top: -5px;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="wolf-container">
-    <h1 class="wolf-title">TEEN WOLF</h1>
-    <div class="wolf-subtitle">BEACON HILLS</div>
-  </div>
-
-</body>
-</html>
- 
- 
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teen Wolf: O Legado de Beacon Hills</title>
+  <title>Teen Wolf: O Universo de Beacon Hills</title>
   <style>
-    /* Estilos Gerais (CSS) */
+    :root {
+      --bg-color: #0a0c10;
+      --card-bg: #121620;
+      --accent-color: #e62429;
+      --accent-glow: rgba(230, 36, 41, 0.4);
+      --text-main: #f0f4f8;
+      --text-sub: #94a3b8;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -67,137 +21,175 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0b0f19;
-      color: #e0e6ed;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
       line-height: 1.6;
     }
 
     header {
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(11, 15, 25, 1)), 
-                  url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80') center/cover;
-      padding: 80px 20px;
+      background: linear-gradient(180deg, rgba(10, 12, 16, 0.6) 0%, var(--bg-color) 100%),
+                  url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      padding: 100px 20px 60px;
       text-align: center;
-      border-bottom: 3px solid #ff3333;
+      border-bottom: 2px solid var(--accent-color);
     }
 
-    /* Título Grande */
-    h1.main-title {
-      font-size: 3.5rem;
-      color: #ff3333;
+    /* Título Principal */
+    h1.hero-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 4px;
-      text-shadow: 0 0 15px rgba(255, 51, 51, 0.6);
+      letter-spacing: 6px;
+      color: #fff;
+      text-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
       margin-bottom: 10px;
     }
 
     header p {
-      font-size: 1.2rem;
-      color: #a0aec0;
+      font-size: 1.25rem;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
     .container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
     }
 
+    /* Seções */
     section {
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
 
-    /* Títulos de Seção */
-    .section-title {
+    .section-header {
       font-size: 2rem;
-      color: #ffffff;
-      border-left: 4px solid #ff3333;
-      padding-left: 10px;
-      margin-bottom: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    /* Seção da História */
-    .story-text {
-      background-color: #151c2c;
-      padding: 25px;
-      border-radius: 8px;
+    .section-header::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 28px;
+      background-color: var(--accent-color);
+      border-radius: 2px;
+    }
+
+    /* História */
+    .synopsis {
+      background-color: var(--card-bg);
+      border: 1px solid #1e2638;
+      border-radius: 12px;
+      padding: 30px;
       font-size: 1.1rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      color: #cbd5e1;
+    }
+
+    .synopsis p + p {
+      margin-top: 16px;
     }
 
     /* Galeria de Personagens */
-    .characters-grid {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
     }
 
     .card {
-      background-color: #151c2c;
-      border-radius: 8px;
+      background-color: var(--card-bg);
+      border: 1px solid #1e2638;
+      border-radius: 12px;
       overflow: hidden;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(255, 51, 51, 0.3);
+      transform: translateY(-6px);
+      border-color: var(--accent-color);
+      box-shadow: 0 10px 20px var(--accent-glow);
     }
 
     .card img {
       width: 100%;
-      height: 250px;
+      height: 280px;
       object-fit: cover;
     }
 
-    .card h3 {
-      margin: 15px 0 5px;
-      color: #ffffff;
-    }
-
-    .card p {
-      color: #ff3333;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-    }
-
-    /* Interatividade (JavaScript Output) */
-    .interactive-box {
-      background-color: #151c2c;
+    .card-content {
       padding: 20px;
-      border-radius: 8px;
+    }
+
+    .card-content h3 {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .card-content .role {
+      font-size: 0.85rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+    }
+
+    /* Interatividade */
+    .interactive-zone {
+      background: linear-gradient(135deg, var(--card-bg) 0%, #1a202c 100%);
+      border: 1px solid #1e2638;
+      border-radius: 12px;
+      padding: 40px 20px;
       text-align: center;
     }
 
-    button {
-      background-color: #ff3333;
-      color: white;
+    .btn {
+      background-color: var(--accent-color);
+      color: #fff;
       border: none;
-      padding: 12px 24px;
+      padding: 14px 28px;
       font-size: 1rem;
-      border-radius: 5px;
+      font-weight: 700;
+      border-radius: 8px;
       cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
+      transition: background-color 0.2s ease, transform 0.1s ease;
     }
 
-    button:hover {
-      background-color: #cc0000;
+    .btn:hover {
+      background-color: #c41e23;
     }
 
-    #quote-display {
-      margin-top: 15px;
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    #quote-output {
+      margin-top: 24px;
+      font-size: 1.2rem;
       font-style: italic;
-      color: #cbd5e1;
-      min-height: 24px;
+      color: #f1f5f9;
+      min-height: 2em;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: #070a10;
-      color: #64748b;
+      padding: 30px;
+      border-top: 1px solid #1e2638;
+      color: var(--text-sub);
       font-size: 0.9rem;
     }
   </style>
@@ -205,76 +197,90 @@
 <body>
 
   <header>
-    <h1 class="main-title">TEEN WOLF</h1>
-    <p>O Mundo Sobrenatural de Beacon Hills</p>
+    <h1 class="hero-title">TEEN WOLF</h1>
+    <p>A Matilha de Beacon Hills</p>
   </header>
 
-  <div class="container">
-    
+  <main class="container">
+
     <section>
-      <div class="section-title">A História</div>
-      <div class="story-text">
+      <h2 class="section-header">A História</h2>
+      <div class="synopsis">
         <p>
-          A vida do jovem Scott McCall muda completamente após ele ser mordido por um lobisomem Alfa na floresta de Beacon Hills. Junto com seu melhor amigo Stiles Stilinski, Scott precisa aprender a controlar seus novos poderes sobrenaturais enquanto protege sua cidade de ameaças antigas, caçadores e criaturas sombrias que emergem da escuridão.
+          A vida do jovem Scott McCall muda radicalmente após ele ser atacado e mordido por um lobisomem Alfa na sombria floresta de Beacon Hills. O incidente concede a ele habilidades sobre-humanas, como força aguçada, velocidade e sentidos apurados, mas também o arrasta para o perigoso mundo sobrenatural.
+        </p>
+        <p>
+          Com o apoio incondicional de seu melhor amigo Stiles Stilinski e a orientação do lobisomem Derek Hale, Scott tenta manter sua vida escolar normal enquanto defende sua cidade contra caçadores perigosos, Alfas rivais, criaturas ancestrais e forças das trevas.
         </p>
       </div>
     </section>
 
     <section>
-      <div class="section-title">Personagens Principais</div>
-      <div class="characters-grid">
-        
+      <h2 class="section-header">Personagens Principais</h2>
+      <div class="grid">
+
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Scott McCall">
-          <h3>Scott McCall</h3>
-          <p>O Alfa Verdadeiro</p>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Scott McCall">
+          <div class="card-content">
+            <h3>Scott McCall</h3>
+            <div class="role">Alfa Verdadeiro</div>
+            <p>O líder da matilha. Luta para proteger aqueles que ama sem perder sua humanidade.</p>
+          </div>
         </div>
 
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Stiles Stilinski">
-          <h3>Stiles Stilinski</h3>
-          <p>O Humano Humorado</p>
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Stiles Stilinski">
+          <div class="card-content">
+            <h3>Stiles Stilinski</h3>
+            <div class="role">Estrategista Humano</div>
+            <p>Sarcástico e extremamente inteligente, usa sua dedução para resolver mistérios.</p>
+          </div>
         </div>
 
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Lydia Martin">
-          <h3>Lydia Martin</h3>
-          <p>A Banshee</p>
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Lydia Martin">
+          <div class="card-content">
+            <h3>Lydia Martin</h3>
+            <div class="role">Banshee</div>
+            <p>Possui uma mente brilhante e a habilidade sobrenatural de sentir o perigo e a morte.</p>
+          </div>
         </div>
 
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80" alt="Derek Hale">
-          <h3>Derek Hale</h3>
-          <p>O Lobisomem Experiente</p>
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80" alt="Derek Hale">
+          <div class="card-content">
+            <h3>Derek Hale</h3>
+            <div class="role">Lobisomem</div>
+            <p>Um sobrevivente experiente de uma família de lobisomens com um passado conturbado.</p>
+          </div>
         </div>
 
       </div>
     </section>
 
     <section>
-      <div class="section-title">Frases Marcantes</div>
-      <div class="interactive-box">
-        <button onclick="mostrarFrase()">Gerar Frase da Série</button>
-        <p id="quote-display">Clique no botão para ver uma frase!</p>
+      <h2 class="section-header">Citações de Beacon Hills</h2>
+      <div class="interactive-zone">
+        <button class="btn" onclick="gerarFrase()">Gerar Citação Aleatória</button>
+        <div id="quote-output">Clique no botão acima para ver uma frase da série.</div>
       </div>
     </section>
 
-  </div>
+  </main>
 
   <footer>
-    <p>Página criada para fãs de Teen Wolf.</p>
+    <p>Desenvolvido para fãs da série Teen Wolf.</p>
   </footer>
 
   <script>
-    const frases = [
-      '"O sol, a lua, a verdade." — Mantra Bruxo/Lobisomem',
+    const citacoes = [
+      '"O sol, a lua, a verdade." — Mantra da Matilha',
       '"Nem todos nós podemos ser monstros reais." — Stiles Stilinski',
-      '"Você não é um monstro. Você é um lobisomem." — Stiles Stilinski',
+      '"Nós os protegemos quando eles não podem se proteger." — Scott McCall',
       '"A dor faz você se sentir vivo." — Derek Hale',
-      '"Nós os protegemos quando eles não podem se proteger."' — Scott McCall
+      '"Você não é um monstro. Você é um lobisomem." — Stiles Stilinski'
     ];
 
-    
     
   </script>
 
