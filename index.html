@@ -52,3 +52,231 @@
 </html>
  
  
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teen Wolf: O Legado de Beacon Hills</title>
+  <style>
+    /* Estilos Gerais (CSS) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0b0f19;
+      color: #e0e6ed;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(11, 15, 25, 1)), 
+                  url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80') center/cover;
+      padding: 80px 20px;
+      text-align: center;
+      border-bottom: 3px solid #ff3333;
+    }
+
+    /* Título Grande */
+    h1.main-title {
+      font-size: 3.5rem;
+      color: #ff3333;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      text-shadow: 0 0 15px rgba(255, 51, 51, 0.6);
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #a0aec0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 50px;
+    }
+
+    /* Títulos de Seção */
+    .section-title {
+      font-size: 2rem;
+      color: #ffffff;
+      border-left: 4px solid #ff3333;
+      padding-left: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Seção da História */
+    .story-text {
+      background-color: #151c2c;
+      padding: 25px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Galeria de Personagens */
+    .characters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #151c2c;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(255, 51, 51, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 15px 0 5px;
+      color: #ffffff;
+    }
+
+    .card p {
+      color: #ff3333;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    /* Interatividade (JavaScript Output) */
+    .interactive-box {
+      background-color: #151c2c;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    button {
+      background-color: #ff3333;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #cc0000;
+    }
+
+    #quote-display {
+      margin-top: 15px;
+      font-style: italic;
+      color: #cbd5e1;
+      min-height: 24px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #070a10;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 class="main-title">TEEN WOLF</h1>
+    <p>O Mundo Sobrenatural de Beacon Hills</p>
+  </header>
+
+  <div class="container">
+    
+    <section>
+      <div class="section-title">A História</div>
+      <div class="story-text">
+        <p>
+          A vida do jovem Scott McCall muda completamente após ele ser mordido por um lobisomem Alfa na floresta de Beacon Hills. Junto com seu melhor amigo Stiles Stilinski, Scott precisa aprender a controlar seus novos poderes sobrenaturais enquanto protege sua cidade de ameaças antigas, caçadores e criaturas sombrias que emergem da escuridão.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Personagens Principais</div>
+      <div class="characters-grid">
+        
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Scott McCall">
+          <h3>Scott McCall</h3>
+          <p>O Alfa Verdadeiro</p>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Stiles Stilinski">
+          <h3>Stiles Stilinski</h3>
+          <p>O Humano Humorado</p>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Lydia Martin">
+          <h3>Lydia Martin</h3>
+          <p>A Banshee</p>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80" alt="Derek Hale">
+          <h3>Derek Hale</h3>
+          <p>O Lobisomem Experiente</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Frases Marcantes</div>
+      <div class="interactive-box">
+        <button onclick="mostrarFrase()">Gerar Frase da Série</button>
+        <p id="quote-display">Clique no botão para ver uma frase!</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Página criada para fãs de Teen Wolf.</p>
+  </footer>
+
+  <script>
+    const frases = [
+      '"O sol, a lua, a verdade." — Mantra Bruxo/Lobisomem',
+      '"Nem todos nós podemos ser monstros reais." — Stiles Stilinski',
+      '"Você não é um monstro. Você é um lobisomem." — Stiles Stilinski',
+      '"A dor faz você se sentir vivo." — Derek Hale',
+      '"Nós os protegemos quando eles não podem se proteger."' — Scott McCall
+    ];
+
+    
+    
+  </script>
+
+</body>
+</html>
