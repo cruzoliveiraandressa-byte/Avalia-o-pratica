@@ -1,288 +1,1439 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teen Wolf: O Universo de Beacon Hills</title>
-  <style>
-    :root {
-      --bg-color: #0a0c10;
-      --card-bg: #121620;
-      --accent-color: #e62429;
-      --accent-glow: rgba(230, 36, 41, 0.4);
-      --text-main: #f0f4f8;
-      --text-sub: #94a3b8;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <title>Teen Wolf | Beacon Hills</title>
 
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      line-height: 1.6;
-    }
+    <style>
 
-    header {
-      background: linear-gradient(180deg, rgba(10, 12, 16, 0.6) 0%, var(--bg-color) 100%),
-                  url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      padding: 100px 20px 60px;
-      text-align: center;
-      border-bottom: 2px solid var(--accent-color);
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-    /* Título Principal */
-    h1.hero-title {
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 6px;
-      color: #fff;
-      text-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
-      margin-bottom: 10px;
-    }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050608;
+            color: white;
+            overflow-x: hidden;
+        }
 
-    header p {
-      font-size: 1.25rem;
-      color: var(--text-sub);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
+        /* =========================
+           MENU
+        ========================= */
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
 
-    /* Seções */
-    section {
-      margin-bottom: 60px;
-    }
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
 
-    .section-header {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
 
-    .section-header::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 28px;
-      background-color: var(--accent-color);
-      border-radius: 2px;
-    }
+        nav {
+            max-width: 1200px;
+            margin: auto;
 
-    /* História */
-    .synopsis {
-      background-color: var(--card-bg);
-      border: 1px solid #1e2638;
-      border-radius: 12px;
-      padding: 30px;
-      font-size: 1.1rem;
-      color: #cbd5e1;
-    }
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-    .synopsis p + p {
-      margin-top: 16px;
-    }
+            padding: 18px 30px;
+        }
 
-    /* Galeria de Personagens */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-    }
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #d7ff00;
+        }
 
-    .card {
-      background-color: var(--card-bg);
-      border: 1px solid #1e2638;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
 
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: var(--accent-color);
-      box-shadow: 0 10px 20px var(--accent-glow);
-    }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-    .card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-    }
+        nav a:hover {
+            color: #d7ff00;
+        }
 
-    .card-content {
-      padding: 20px;
-    }
+        /* =========================
+           HERO
+        ========================= */
 
-    .card-content h3 {
-      font-size: 1.3rem;
-      color: #fff;
-      margin-bottom: 4px;
-    }
+        .hero {
+            min-height: 100vh;
 
-    .card-content .role {
-      font-size: 0.85rem;
-      color: var(--accent-color);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-    .card-content p {
-      font-size: 0.95rem;
-      color: var(--text-sub);
-    }
+            text-align: center;
 
-    /* Interatividade */
-    .interactive-zone {
-      background: linear-gradient(135deg, var(--card-bg) 0%, #1a202c 100%);
-      border: 1px solid #1e2638;
-      border-radius: 12px;
-      padding: 40px 20px;
-      text-align: center;
-    }
+            position: relative;
 
-    .btn {
-      background-color: var(--accent-color);
-      color: #fff;
-      border: none;
-      padding: 14px 28px;
-      font-size: 1rem;
-      font-weight: 700;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.1s ease;
-    }
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.35),
+                    rgba(0,0,0,0.92)
+                ),
+                url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=80");
 
-    .btn:hover {
-      background-color: #c41e23;
-    }
+            background-size: cover;
+            background-position: center;
+        }
 
-    .btn:active {
-      transform: scale(0.98);
-    }
+        .hero::after {
+            content: "";
 
-    #quote-output {
-      margin-top: 24px;
-      font-size: 1.2rem;
-      font-style: italic;
-      color: #f1f5f9;
-      min-height: 2em;
-    }
+            position: absolute;
+            inset: 0;
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      border-top: 1px solid #1e2638;
-      color: var(--text-sub);
-      font-size: 0.9rem;
-    }
-  </style>
+            background:
+                radial-gradient(
+                    circle,
+                    transparent 20%,
+                    rgba(0,0,0,0.85) 100%
+                );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 900px;
+            padding: 30px;
+        }
+
+        .hero h1 {
+            font-size: clamp(70px, 13vw, 180px);
+
+            font-weight: 900;
+            letter-spacing: 8px;
+
+            color: white;
+
+            text-shadow:
+                0 0 10px #d7ff00,
+                0 0 30px #7c9600,
+                0 0 80px #d7ff00;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            color: #d7ff00;
+            letter-spacing: 8px;
+            margin-top: -15px;
+        }
+
+        .hero p {
+            margin: 25px auto;
+            max-width: 700px;
+
+            font-size: 18px;
+            line-height: 1.8;
+
+            color: #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 15px 30px;
+
+            border: 2px solid #d7ff00;
+
+            color: #d7ff00;
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #d7ff00;
+            color: black;
+
+            box-shadow: 0 0 30px #d7ff00;
+        }
+
+        /* =========================
+           SEÇÕES
+        ========================= */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+
+            font-size: 45px;
+
+            margin-bottom: 20px;
+
+            color: #d7ff00;
+
+            text-transform: uppercase;
+
+            letter-spacing: 3px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #999;
+
+            max-width: 750px;
+
+            margin: 0 auto 60px;
+
+            line-height: 1.7;
+        }
+
+        /* =========================
+           HISTÓRIA
+        ========================= */
+
+        .story {
+            background:
+                linear-gradient(
+                    180deg,
+                    #050608,
+                    #0c100b
+                );
+        }
+
+        .story-container {
+            max-width: 1000px;
+            margin: auto;
+
+            background: rgba(255,255,255,0.03);
+
+            border: 1px solid rgba(215,255,0,0.15);
+
+            padding: 45px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 0 50px rgba(215,255,0,0.05);
+        }
+
+        .story-container p {
+            line-height: 1.9;
+            color: #ccc;
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        /* =========================
+           PERSONAGENS
+        ========================= */
+
+        .characters {
+            background: #080a08;
+        }
+
+        .character-grid {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 25px;
+        }
+
+        .card {
+            background: #101310;
+
+            border: 1px solid #202720;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            transition: 0.4s;
+
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+
+            border-color: #d7ff00;
+
+            box-shadow:
+                0 15px 40px rgba(215,255,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+
+            object-fit: cover;
+
+            filter: grayscale(30%);
+
+            transition: 0.4s;
+        }
+
+        .card:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.04);
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 7px;
+        }
+
+        .card .actor {
+            color: #d7ff00;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           TEMPORADAS
+        ========================= */
+
+        .seasons {
+            background: #050605;
+        }
+
+        .season-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .season {
+            margin-bottom: 15px;
+
+            border: 1px solid #252925;
+
+            background: #0c0f0c;
+        }
+
+        .season-header {
+            padding: 22px 25px;
+
+            cursor: pointer;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            transition: 0.3s;
+        }
+
+        .season-header:hover {
+            background: #151a14;
+        }
+
+        .season-header h3 {
+            color: #d7ff00;
+        }
+
+        .season-content {
+            max-height: 0;
+
+            overflow: hidden;
+
+            transition: max-height 0.5s ease;
+
+            color: #aaa;
+
+            line-height: 1.8;
+        }
+
+        .season-content p {
+            padding: 0 25px 25px;
+        }
+
+        /* =========================
+           CRIATURAS
+        ========================= */
+
+        .creatures {
+            background:
+                linear-gradient(
+                    rgba(5,6,8,0.92),
+                    rgba(5,6,8,0.92)
+                ),
+                url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1800&q=80");
+
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .creature-grid {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 20px;
+        }
+
+        .creature {
+            padding: 30px;
+
+            text-align: center;
+
+            background: rgba(0,0,0,0.65);
+
+            border: 1px solid #323a2d;
+
+            border-radius: 10px;
+
+            transition: 0.3s;
+        }
+
+        .creature:hover {
+            border-color: #d7ff00;
+            transform: scale(1.03);
+        }
+
+        .creature .icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .creature h3 {
+            color: #d7ff00;
+            margin-bottom: 10px;
+        }
+
+        .creature p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           GALERIA
+        ========================= */
+
+        .gallery {
+            background: #090b09;
+        }
+
+        .gallery-grid {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 280px;
+
+            overflow: hidden;
+
+            border-radius: 10px;
+
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.12);
+            filter: brightness(0.6);
+        }
+
+        .gallery-item span {
+            position: absolute;
+
+            bottom: 20px;
+            left: 20px;
+
+            font-weight: bold;
+
+            color: #d7ff00;
+
+            opacity: 0;
+
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover span {
+            opacity: 1;
+        }
+
+        /* =========================
+           CURIOSIDADES
+        ========================= */
+
+        .facts {
+            background: #050605;
+        }
+
+        .facts-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .fact {
+            padding: 25px;
+
+            margin-bottom: 15px;
+
+            border-left: 3px solid #d7ff00;
+
+            background: #0d100d;
+
+            color: #bbb;
+
+            line-height: 1.7;
+        }
+
+        .fact strong {
+            color: white;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            padding: 50px 20px;
+
+            background: black;
+
+            border-top: 1px solid #1e241d;
+
+            color: #777;
+        }
+
+        footer strong {
+            color: #d7ff00;
+        }
+
+        /* =========================
+           BOTÃO TOPO
+        ========================= */
+
+        #topBtn {
+            position: fixed;
+
+            bottom: 25px;
+            right: 25px;
+
+            width: 50px;
+            height: 50px;
+
+            border-radius: 50%;
+
+            border: 2px solid #d7ff00;
+
+            background: #080a08;
+
+            color: #d7ff00;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            display: none;
+
+            z-index: 999;
+        }
+
+        #topBtn:hover {
+            background: #d7ff00;
+            color: black;
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media(max-width: 700px) {
+
+            nav {
+                padding: 15px;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 65px;
+                letter-spacing: 3px;
+            }
+
+            .hero h2 {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .story-container {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
 </head>
+
 <body>
 
-  <header>
-    <h1 class="hero-title">TEEN WOLF</h1>
-    <p>A Matilha de Beacon Hills</p>
-  </header>
+    <!-- =========================
+         MENU
+    ========================== -->
 
-  <main class="container">
+    <header>
 
-    <section>
-      <h2 class="section-header">A História</h2>
-      <div class="synopsis">
-        <p>
-          A vida do jovem Scott McCall muda radicalmente após ele ser atacado e mordido por um lobisomem Alfa na sombria floresta de Beacon Hills. O incidente concede a ele habilidades sobre-humanas, como força aguçada, velocidade e sentidos apurados, mas também o arrasta para o perigoso mundo sobrenatural.
+        <nav>
+
+            <div class="logo">
+                TEEN WOLF
+            </div>
+
+            <ul>
+                <li><a href="#historia">História</a></li>
+                <li><a href="#personagens">Personagens</a></li>
+                <li><a href="#temporadas">Temporadas</a></li>
+                <li><a href="#criaturas">Criaturas</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>TEEN WOLF</h1>
+
+            <h2>BEACON HILLS</h2>
+
+            <p>
+                Uma cidade aparentemente normal.
+                Um segredo sobrenatural.
+                Uma matilha disposta a proteger aqueles que ama.
+            </p>
+
+            <a href="#historia" class="btn">
+                ENTRAR EM BEACON HILLS
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HISTÓRIA
+    ========================== -->
+
+    <section class="story" id="historia">
+
+        <h2 class="section-title">
+            A História
+        </h2>
+
+        <p class="section-subtitle">
+            Conheça a história de Scott McCall e da matilha de Beacon Hills.
         </p>
-        <p>
-          Com o apoio incondicional de seu melhor amigo Stiles Stilinski e a orientação do lobisomem Derek Hale, Scott tenta manter sua vida escolar normal enquanto defende sua cidade contra caçadores perigosos, Alfas rivais, criaturas ancestrais e forças das trevas.
+
+        <div class="story-container">
+
+            <p>
+                Scott McCall era apenas um estudante do ensino médio
+                tentando sobreviver à escola, ao lacrosse e aos problemas
+                comuns da adolescência.
+            </p>
+
+            <p>
+                Tudo muda quando Scott e seu melhor amigo, Stiles Stilinski,
+                entram na floresta de Beacon Hills durante uma investigação.
+                Scott acaba sendo atacado e mordido por um lobisomem.
+            </p>
+
+            <p>
+                Depois do ataque, Scott começa a perceber que seu corpo
+                mudou. Seus sentidos ficam extremamente aguçados, sua
+                força aumenta e ele descobre que pode se transformar em
+                lobisomem.
+            </p>
+
+            <p>
+                Ao mesmo tempo, criaturas sobrenaturais começam a aparecer
+                em Beacon Hills. Scott precisa aprender a controlar seus
+                poderes enquanto tenta proteger seus amigos e sua família.
+            </p>
+
+            <p>
+                Ao longo da série, a matilha enfrenta lobisomens,
+                caçadores, banshees, kitsunes, quimeras, hellhounds,
+                nogitsunes e diversas outras ameaças.
+            </p>
+
+            <p>
+                No centro de tudo estão amizade, lealdade, família e a
+                escolha entre usar o poder para dominar ou para proteger.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PERSONAGENS
+    ========================== -->
+
+    <section class="characters" id="personagens">
+
+        <h2 class="section-title">
+            Personagens
+        </h2>
+
+        <p class="section-subtitle">
+            Alguns dos personagens mais importantes de Teen Wolf.
         </p>
-      </div>
+
+        <div class="character-grid">
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1615813967515-e1838c1c5116?auto=format&fit=crop&w=700&q=80">
+
+                <div class="card-content">
+
+                    <h3>Scott McCall</h3>
+
+                    <div class="actor">
+                        Tyler Posey
+                    </div>
+
+                    <p>
+                        O protagonista da série. Scott começa sua jornada
+                        como um adolescente comum e se transforma em um
+                        poderoso Alpha.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80">
+
+                <div class="card-content">
+
+                    <h3>Stiles Stilinski</h3>
+
+                    <div class="actor">
+                        Dylan O'Brien
+                    </div>
+
+                    <p>
+                        Melhor amigo de Scott. Inteligente, sarcástico e
+                        extremamente importante para a matilha.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=700&q=80">
+
+                <div class="card-content">
+
+                    <h3>Lydia Martin</h3>
+
+                    <div class="actor">
+                        Holland Roden
+                    </div>
+
+                    <p>
+                        Uma das personagens mais inteligentes da série.
+                        Lydia descobre habilidades sobrenaturais ligadas
+                        às banshees.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=80">
+
+                <div class="card-content">
+
+                    <h3>Derek Hale</h3>
+
+                    <div class="actor">
+                        Tyler Hoechlin
+                    </div>
+
+                    <p>
+                        Um lobisomem da família Hale que ajuda Scott a
+                        compreender o mundo sobrenatural.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=700&q=80">
+
+                <div class="card-content">
+
+                    <h3>Allison Argent</h3>
+
+                    <div class="actor">
+                        Crystal Reed
+                    </div>
+
+                    <p>
+                        Integrante da família Argent, tradicionalmente
+                        ligada à caça de criaturas sobrenaturais.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=700&q=80">
+
+                <div class="card-content">
+
+                    <h3>Peter Hale</h3>
+
+                    <div class="actor">
+                        Ian Bohen
+                    </div>
+
+                    <p>
+                        Um personagem complexo ligado diretamente à história
+                        da família Hale.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <section>
-      <h2 class="section-header">Personagens Principais</h2>
-      <div class="grid">
 
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Scott McCall">
-          <div class="card-content">
-            <h3>Scott McCall</h3>
-            <div class="role">Alfa Verdadeiro</div>
-            <p>O líder da matilha. Luta para proteger aqueles que ama sem perder sua humanidade.</p>
-          </div>
+    <!-- =========================
+         TEMPORADAS
+    ========================== -->
+
+    <section class="seasons" id="temporadas">
+
+        <h2 class="section-title">
+            Temporadas
+        </h2>
+
+        <p class="section-subtitle">
+            Clique em cada temporada para descobrir seu arco principal.
+        </p>
+
+        <div class="season-container">
+
+            <div class="season">
+
+                <div class="season-header">
+                    <h3>Temporada 1</h3>
+                    <span>+</span>
+                </div>
+
+                <div class="season-content">
+                    <p>
+                        Scott é mordido por um lobisomem e começa a descobrir
+                        seus novos poderes. Enquanto tenta manter uma vida
+                        normal, ele se envolve com Allison e enfrenta os
+                        perigos de Beacon Hills.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="season">
+
+                <div class="season-header">
+                    <h3>Temporada 2</h3>
+                    <span>+</span>
+                </div>
+
+                <div class="season-content">
+                    <p>
+                        A ameaça sobrenatural cresce. Scott e seus amigos
+                        precisam enfrentar novos inimigos enquanto a família
+                        Argent continua sua guerra contra os lobisomens.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="season">
+
+                <div class="season-header">
+                    <h3>Temporada 3</h3>
+                    <span>+</span>
+                </div>
+
+                <div class="season-content">
+                    <p>
+                        Uma das fases mais sombrias da história. A matilha
+                        enfrenta uma ameaça sobrenatural extremamente
+                        perigosa e acontecimentos que mudam profundamente
+                        seus integrantes.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="season">
+
+                <div class="season-header">
+                    <h3>Temporada 4</h3>
+                    <span>+</span>
+                </div>
+
+                <div class="season-content">
+                    <p>
+                        Depois das perdas anteriores, Scott e sua matilha
+                        enfrentam novos inimigos e uma misteriosa lista
+                        de alvos sobrenaturais.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="season">
+
+                <div class="season-header">
+                    <h3>Temporada 5</h3>
+                    <span>+</span>
+                </div>
+
+                <div class="season-content">
+                    <p>
+                        Scott e seus amigos precisam enfrentar as consequências
+                        de experimentos sobrenaturais e novas ameaças que
+                        colocam a própria existência da matilha em risco.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="season">
+
+                <div class="season-header">
+                    <h3>Temporada 6</h3>
+                    <span>+</span>
+                </div>
+
+                <div class="season-content">
+                    <p>
+                        A última temporada coloca Beacon Hills diante de
+                        novas ameaças e encerra a jornada da matilha,
+                        levando seus integrantes para diferentes caminhos.
+                    </p>
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Stiles Stilinski">
-          <div class="card-content">
-            <h3>Stiles Stilinski</h3>
-            <div class="role">Estrategista Humano</div>
-            <p>Sarcástico e extremamente inteligente, usa sua dedução para resolver mistérios.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Lydia Martin">
-          <div class="card-content">
-            <h3>Lydia Martin</h3>
-            <div class="role">Banshee</div>
-            <p>Possui uma mente brilhante e a habilidade sobrenatural de sentir o perigo e a morte.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80" alt="Derek Hale">
-          <div class="card-content">
-            <h3>Derek Hale</h3>
-            <div class="role">Lobisomem</div>
-            <p>Um sobrevivente experiente de uma família de lobisomens com um passado conturbado.</p>
-          </div>
-        </div>
-
-      </div>
     </section>
 
-    <section>
-      <h2 class="section-header">Citações de Beacon Hills</h2>
-      <div class="interactive-zone">
-        <button class="btn" onclick="gerarFrase()">Gerar Citação Aleatória</button>
-        <div id="quote-output">Clique no botão acima para ver uma frase da série.</div>
-      </div>
+
+    <!-- =========================
+         CRIATURAS
+    ========================== -->
+
+    <section class="creatures" id="criaturas">
+
+        <h2 class="section-title">
+            Criaturas
+        </h2>
+
+        <p class="section-subtitle">
+            O universo de Teen Wolf possui diferentes seres sobrenaturais.
+        </p>
+
+        <div class="creature-grid">
+
+            <div class="creature">
+
+                <div class="icon">🐺</div>
+
+                <h3>Lobisomem</h3>
+
+                <p>
+                    Criaturas com força, velocidade e sentidos
+                    sobrenaturais.
+                </p>
+
+            </div>
+
+
+            <div class="creature">
+
+                <div class="icon">🦊</div>
+
+                <h3>Kitsune</h3>
+
+                <p>
+                    Seres sobrenaturais associados à mitologia japonesa.
+                </p>
+
+            </div>
+
+
+            <div class="creature">
+
+                <div class="icon">👻</div>
+
+                <h3>Banshee</h3>
+
+                <p>
+                    Criaturas capazes de perceber e emitir gritos
+                    sobrenaturais.
+                </p>
+
+            </div>
+
+
+            <div class="creature">
+
+                <div class="icon">🔥</div>
+
+                <h3>Hellhound</h3>
+
+                <p>
+                    Uma criatura sobrenatural associada ao fogo e ao
+                    mundo dos mortos.
+                </p>
+
+            </div>
+
+
+            <div class="creature">
+
+                <div class="icon">🧟</div>
+
+                <h3>Quimera</h3>
+
+                <p>
+                    Seres criados através de experimentos sobrenaturais.
+                </p>
+
+            </div>
+
+
+            <div class="creature">
+
+                <div class="icon">🌑</div>
+
+                <h3>Nogitsune</h3>
+
+                <p>
+                    Uma entidade extremamente perigosa ligada às
+                    kitsunes e ao caos.
+                </p>
+
+            </div>
+
+        </div>
+
     </section>
 
-  </main>
 
-  <footer>
-    <p>Desenvolvido para fãs da série Teen Wolf.</p>
-  </footer>
+    <!-- =========================
+         GALERIA
+    ========================== -->
 
-  <script>
-    const citacoes = [
-      '"O sol, a lua, a verdade." — Mantra da Matilha',
-      '"Nem todos nós podemos ser monstros reais." — Stiles Stilinski',
-      '"Nós os protegemos quando eles não podem se proteger." — Scott McCall',
-      '"A dor faz você se sentir vivo." — Derek Hale',
-      '"Você não é um monstro. Você é um lobisomem." — Stiles Stilinski'
-    ];
+    <section class="gallery" id="galeria">
 
-    
-  </script>
+        <h2 class="section-title">
+            Galeria
+        </h2>
+
+        <p class="section-subtitle">
+            Uma coleção de imagens para criar a atmosfera de Beacon Hills.
+        </p>
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+
+                <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80">
+
+                <span>Beacon Hills</span>
+
+            </div>
+
+
+            <div class="gallery-item">
+
+                <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80">
+
+                <span>A Floresta</span>
+
+            </div>
+
+
+            <div class="gallery-item">
+
+                <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=80">
+
+                <span>Lua Cheia</span>
+
+            </div>
+
+
+            <div class="gallery-item">
+
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80">
+
+                <span>A Noite</span>
+
+            </div>
+
+
+            <div class="gallery-item">
+
+                <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=80">
+
+                <span>A Matilha</span>
+
+            </div>
+
+
+            <div class="gallery-item">
+
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80">
+
+                <span>Beacon Hills</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CURIOSIDADES
+    ========================== -->
+
+    <section class="facts">
+
+        <h2 class="section-title">
+            Curiosidades
+        </h2>
+
+        <div class="facts-container">
+
+            <div class="fact">
+                <strong>01 — A série:</strong>
+                Teen Wolf foi criada por Jeff Davis e estreou em 2011.
+            </div>
+
+            <div class="fact">
+                <strong>02 — Scott:</strong>
+                Scott McCall é interpretado por Tyler Posey.
+            </div>
+
+            <div class="fact">
+                <strong>03 — Stiles:</strong>
+                Stiles Stilinski é interpretado por Dylan O'Brien e
+                tornou-se um dos personagens mais populares da série.
+            </div>
+
+            <div class="fact">
+                <strong>04 — Beacon Hills:</strong>
+                A história se passa na cidade fictícia de Beacon Hills,
+                na Califórnia.
+            </div>
+
+            <div class="fact">
+                <strong>05 — Universo sobrenatural:</strong>
+                A série apresenta diversos tipos de criaturas além
+                dos lobisomens.
+            </div>
+
+            <div class="fact">
+                <strong>06 — O filme:</strong>
+                A história continuou em Teen Wolf: The Movie,
+                lançado em 2023 no Paramount+.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            Site fã inspirado no universo de
+            <strong>Teen Wolf</strong>.
+        </p>
+
+        <br>
+
+        <p>
+            Este projeto não é oficial e não possui vínculo com MTV,
+            Paramount+ ou os detentores dos direitos da série.
+        </p>
+
+    </footer>
+
+
+    <!-- BOTÃO VOLTAR AO TOPO -->
+
+    <button id="topBtn">
+        ↑
+    </button>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /* =========================
+           ACORDEÃO DAS TEMPORADAS
+        ========================== */
+
+        const seasons = document.querySelectorAll(".season");
+
+        seasons.forEach(season => {
+
+            const header = season.querySelector(".season-header");
+            const content = season.querySelector(".season-content");
+            const icon = season.querySelector("span");
+
+            header.addEventListener("click", () => {
+
+                const isOpen =
+                    content.style.maxHeight &&
+                    content.style.maxHeight !== "0px";
+
+                // Fecha todas
+                seasons.forEach(otherSeason => {
+
+                    otherSeason
+                        .querySelector(".season-content")
+                        .style.maxHeight = null;
+
+                    otherSeason
+                        .querySelector("span")
+                        .textContent = "+";
+
+                });
+
+                // Abre a selecionada
+                if (!isOpen) {
+
+                    content.style.maxHeight =
+                        content.scrollHeight + "px";
+
+                    icon.textContent = "−";
+
+                }
+
+            });
+
+        });
+
+
+        /* =========================
+           BOTÃO VOLTAR AO TOPO
+        ========================== */
+
+        const topBtn =
+            document.getElementById("topBtn");
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 500) {
+
+                topBtn.style.display = "block";
+
+            } else {
+
+                topBtn.style.display = "none";
+
+            }
+
+        });
+
+        topBtn.addEventListener("click", () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+
+        /* =========================
+           EFEITO DO TÍTULO
+        ========================== */
+
+        const title =
+            document.querySelector(".hero h1");
+
+        window.addEventListener("mousemove", event => {
+
+            const x =
+                (event.clientX / window.innerWidth - 0.5) * 10;
+
+            const y =
+                (event.clientY / window.innerHeight - 0.5) * 10;
+
+            title.style.transform =
+                `translate(${x}px, ${y}px)`;
+
+        });
+
+
+        /* =========================
+           ANIMAÇÃO AO APARECER
+        ========================== */
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.style.opacity = "1";
+
+                            entry.target.style.transform =
+                                "translateY(0)";
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+
+        document
+            .querySelectorAll(".card, .creature, .fact")
+            .forEach(element => {
+
+                element.style.opacity = "0";
+
+                element.style.transform =
+                    "translateY(30px)";
+
+                element.style.transition =
+                    "opacity 0.7s ease, transform 0.7s ease";
+
+                observer.observe(element);
+
+            });
+
+    </script>
 
 </body>
+
 </html>
